@@ -1,10 +1,10 @@
 import React from "react";
 
-const Drawer = () => {
+const Drawer = ({onClose, items = []}) => {
   return (
-    <div style={{ display: "none" }} className="overlay">
+    <div className="overlay">
       <div className="drawer d-flex flex-column">
-        <h2 className="d-flex justify-between mb-30">
+        <h2 onClick={onClose} className="d-flex justify-between mb-30">
           Корзина{" "}
           <img
             className="removeBtn cu-p"
@@ -14,17 +14,19 @@ const Drawer = () => {
         </h2>
 
         <div className="items">
-          <div className="cartItem d-flex align-center mb-20">
+          {items.map(obj => (
+            <div className="cartItem d-flex align-center mb-20">
             <div
-              style={{ backgroundImage: "url(/img/shoes/1.jpg)" }}
+              style={{ backgroundImage: `url(${obj.imageUrl})` }}
               className="cartItemImg"
             ></div>
             <div className="mr-20 flex">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
+              <p className="mb-5">{obj.title}</p>
+              <b>{obj.price} руб.</b>
             </div>
             <img className="removeBtn" src="/img/btn-remove.svg" alt="remove" />
           </div>
+          ))}
         </div>
 
         <div className="cartTotalBlock">
