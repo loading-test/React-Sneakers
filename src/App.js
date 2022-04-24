@@ -17,7 +17,7 @@ function App() {
       setItems(json);
     });
   },[])
-
+  
   const onAddToCart = (obj) => {
     setCartItems(prev => [...prev, obj])
   }
@@ -36,15 +36,15 @@ function App() {
         </div>
 
         <div className="d-flex flex-wrap">
-          {items.map((item) => {
+          {items.map((item) => (
             <Card
               title={item.title}
               price={item.price}
               imageUrl={item.imageUrl}
               onFavorite={() => console.log("Добавить в закладки")}
               onPlus={(obj) => onAddToCart(obj)}
-            />;
-          })}
+            />
+          ))}
         </div>
       </div>
     </div>
