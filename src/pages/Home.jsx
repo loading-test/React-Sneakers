@@ -3,7 +3,6 @@ import Card from "../components/Card";
 
 const Home = ({
   items,
-  cartItems,
   serchValue,
   setSearchValue,
   onChangeSerchValue,
@@ -11,6 +10,7 @@ const Home = ({
   onAddToCart,
   isLoading
 }) => {
+  
   const renderItems = () => {
     const filtredItems = items.filter(item => item.title.toLowerCase().includes(serchValue.toLowerCase()))
     return (isLoading ? [...Array(8)] : filtredItems)
@@ -19,7 +19,6 @@ const Home = ({
           key={index}
           onFavorite={(obj) => onAddToFavorite(obj)}
           onPlus={(obj) => onAddToCart(obj)}
-          added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
           loading={isLoading}
           {...item}
         />
@@ -32,7 +31,7 @@ const Home = ({
         <h1>
           {serchValue ? `Поиск по запросу: "${serchValue}"` : "Все кросовки"}
         </h1>
-        <div className="search-block">
+        <div className="search-block d-flex">
           <img src="/img/search.svg" alt="Search" />
           {serchValue && (
             <img
