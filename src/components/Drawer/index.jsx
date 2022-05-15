@@ -16,7 +16,7 @@ const Drawer = ({ onClose, onRemove, items = [], opened }) => {
     try {
       setIsLoading(true);
       const { data } = await axios.post(
-        "https://6263ce97c430dc560d31b618.mockapi.io/orders",
+        "https://6263ce97c430dc560d31b618.mockapi.io/order",
         { items: cartItems }
       );
       setOrderId(data.id);
@@ -105,7 +105,7 @@ const Drawer = ({ onClose, onRemove, items = [], opened }) => {
                 : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ"
             }
             image={
-              isOrderComplete ? "/img/complete-order" : "/img/empty-cart.jpg"
+              isOrderComplete ? "/img/complete-order.jpg" : "/img/empty-cart.jpg"
             }
           />
         )}
